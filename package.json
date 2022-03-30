@@ -36,6 +36,7 @@
   },
   "type": "module",
   "dependencies": {
-    "prism-themes": "^1.9.0"
+    "prism-themes": "^1.9.0",
+    "svelte-click-outside": "^1.0.0"
   }
 }
