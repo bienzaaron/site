@@ -8,7 +8,7 @@
 		<a class="no-underline" href="/">Hi <span class="font-serif">👋</span></a>
 		<a class="no-underline" href="/about">About <span class="font-serif">📕</span></a>
 		<a class="no-underline" href="/blog">Blog <span class="font-serif">✍️</span></a>
-		<a class="no-underline" href="/static/resume.txt">Hire Me <span class="font-serif">💲</span></a>
+		<a class="no-underline" href="/resume.txt">Hire Me <span class="font-serif">💲</span></a>
 	</div>
 	<div class="page-content max-w-4xl mb-16">
 		<slot />
