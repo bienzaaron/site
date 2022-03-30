@@ -67,7 +67,7 @@
 			{/each}
 		{/if}
 	</div>
-	<div class="grow pl-16 pb-8">
+	<div class="w-full px-16 pb-8">
 		<slot />
 	</div>
 </div>
