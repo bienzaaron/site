@@ -3,7 +3,7 @@
 	import 'remixicon/fonts/remixicon.css';
 </script>
 
-<div class="page px-32 py-2 flex flex-col font-mono">
+<div class="page px-16 lg:px-32 py-2 flex flex-col font-mono">
 	<div class="header pt-10 pb-16 flex flex-row space-x-20">
 		<a class="no-underline" href="/">Hi <span class="font-serif">👋</span></a>
 		<a class="no-underline" href="/about">About <span class="font-serif">📕</span></a>

@@ -60,7 +60,7 @@
 				<button
 					on:click={toggleFilter.bind(null, tag)}
 					class:font-semibold={tags[tag].selected}
-					class="text-left w-max"
+					class="text-left w-min sm:w-max"
 				>
 					{tag} ({tags[tag].count})
 				</button>
