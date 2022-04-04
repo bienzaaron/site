@@ -1,6 +1,6 @@
 <script context="module">
 	export const load = async ({ fetch, params }) => {
-		const response = await fetch(`/api/posts/${params.postId}`);
+		const response = await fetch(`/api/post/${params.postId}`);
 		const post = await response.json();
 
 		return {
