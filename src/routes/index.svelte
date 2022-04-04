@@ -49,7 +49,7 @@
 {#each commands as command}
 	<div class:hidden={!command.completed}>
 		<p class="my-0"><span class="font-semibold">aj@rva $</span> {command.text}</p>
-		<div class="my-16 ml-8 space-y-10">
+		<div class="my-16 mx-8 space-y-10">
 			<svelte:component this={command.ouputComponent} />
 		</div>
 	</div>
@@ -60,6 +60,9 @@
 		<span class="font-semibold">aj@rva $</span>
 		{currentCommand.text.slice(0, currentCommandIndex)}<span class:hidden={cursorHidden}>_</span>
 	</p>
+	<div class="invisible my-16 ml-8 space-y-10">
+		<svelte:component this={currentCommand.ouputComponent} />
+	</div>
 {:else}
 	<p class="my-0">
 		<span class="font-semibold">aj@rva $</span> <span class:hidden={cursorHidden}>_</span>
