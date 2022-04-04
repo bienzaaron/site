@@ -19,7 +19,6 @@
 	export let posts;
 
 	const tags = {};
-	// @ts-expect-error todo
 	posts.forEach((p) => {
 		p.metadata.tags.forEach((tag) => {
 			if (tags[tag]) {
@@ -50,11 +49,13 @@
 			setTags(tags);
 		}
 	}
+
+	$: isRoot = $page.url.pathname === '/blog';
 </script>
 
-<div class="flex flex-row">
-	<div class="pr-4 border-r border-slate-500 flex flex-col">
-		{#if $page.url.pathname === '/blog'}
+<div class="flex flex-row divide-x divide-slate-500">
+	{#if isRoot}
+		<div class="pr-4 flex flex-col">
 			<h4>Tags</h4>
 			{#each sortedTags as tag}
 				<button
@@ -65,9 +66,9 @@
 					{tag} ({tags[tag].count})
 				</button>
 			{/each}
-		{/if}
-	</div>
-	<div class="w-full px-16 pb-8">
+		</div>
+	{/if}
+	<div class="w-full pb-8" class:pl-16={isRoot}>
 		<slot />
 	</div>
 </div>

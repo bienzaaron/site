@@ -75,4 +75,7 @@
 	p {
 		@apply my-8;
 	}
+	code, pre {
+		overflow-x: scroll;
+	}
 }

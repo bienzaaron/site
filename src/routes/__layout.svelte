@@ -54,7 +54,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="page-content max-w-4xl mx-auto mb-16">
+	<div class="page-content max-w-full md:max-w-4xl mx-auto mb-16">
 		<slot />
 	</div>
 
