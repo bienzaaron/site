@@ -13,8 +13,8 @@ const config = {
 	})],
 	kit: {
 		adapter: adapter({
-			pages: 'build',
-			assets: 'build',
+			pages: 'public',
+			assets: 'public',
 			fallback: null,
 			precompress: false
 		}),
