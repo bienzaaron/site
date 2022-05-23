@@ -1,3 +1,5 @@
+export type TagMetadata = { count: number; selected: boolean };
+
 export type PostMetadata = {
   tags: string[];
   title: string;
@@ -14,8 +16,18 @@ export type Post = PostPreview & {
     html: string;
     css: {
       code: string;
-      map: never,
-    },
+      map: never;
+    };
     head: string;
-  }
+  };
+};
+
+export type GetPostRequest = {
+  params: {
+    postId: string;
+  };
+};
+
+export type SvelteStore<T> = {
+  subscribe: (run: (value: T) => unknown, invalidate?: unknown) => unknown;
 };

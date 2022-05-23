@@ -1,4 +1,4 @@
-declare module "blog/*.md" {
+declare module 'blog/*.md' {
   import { SvelteComponentTyped } from 'svelte';
   import type { PostMetadata } from './routes/api/types';
 
@@ -6,10 +6,10 @@ declare module "blog/*.md" {
 
   declare const component: MarkdownComponent;
   export default component;
-  export type metadata = PostMetadata
+  export type metadata = PostMetadata;
 }
 
-declare module "*.md" {
+declare module '*.md' {
   import { SvelteComponentTyped } from 'svelte';
 
   export default class MarkdownComponent extends SvelteComponentTyped<Record<string, never>> {}
