@@ -17,7 +17,7 @@
 			<a class="no-underline" href="/">Hi <span class="font-serif">👋</span></a>
 			<a class="no-underline" href="/about">About <span class="font-serif">📕</span></a>
 			<a class="no-underline" href="/blog">Blog <span class="font-serif">✍️</span></a>
-			<a class="no-underline" href="/resume.txt">Hire Me <span class="font-serif">💲</span></a>
+			<a class="no-underline" href="https://youtu.be/dQw4w9WgXcQ">Hire Me <span class="font-serif">💲</span></a>
 		</div>
 	</div>
 	<div class="sm:hidden py-4 flex flex-row justify-end">
