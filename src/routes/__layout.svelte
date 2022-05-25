@@ -48,7 +48,7 @@
             <a class="no-underline py-2" href="/">Hi <span class="font-serif">👋</span></a>
             <a class="no-underline py-2" href="/about">About <span class="font-serif">📕</span></a>
             <a class="no-underline py-2" href="/blog">Blog <span class="font-serif">✍️</span></a>
-            <a class="no-underline py-2" href="/resume.txt"
+            <a class="no-underline py-2" href="https://youtu.be/dQw4w9WgXcQ"
               >Hire Me <span class="font-serif">💲</span></a
             >
           </div>
