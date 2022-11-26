@@ -28,6 +28,8 @@ export type GetPostRequest = {
   };
 };
 
+export type GetPostsResponse = PostPreview[];
+
 export type SvelteStore<T> = {
   subscribe: (run: (value: T) => unknown, invalidate?: unknown) => unknown;
 };
