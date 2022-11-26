@@ -18,13 +18,9 @@ const config = {
     adapter: adapter({
       pages: 'public',
       assets: 'public',
-      fallback: null,
+      fallback: false,
       precompress: false,
     }),
-
-    prerender: {
-      default: true,
-    },
   },
 };
 
