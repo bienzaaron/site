@@ -20,8 +20,8 @@
   <!-- TODO: pagination when there's actually some articles here -->
   {#each filteredPosts as post}
     <a class="no-underline" href="/blog/{post.id}">
-      <h2>{post.metadata.title}</h2>
-      <p class="my-0">{post.metadata.description}</p>
+      <h2 data-testid="post-title">{post.metadata.title}</h2>
+      <p class="my-0" data-testid="post-description">{post.metadata.description}</p>
     </a>
   {/each}
 </div>
