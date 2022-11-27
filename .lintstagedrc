@@ -2,6 +2,6 @@
   "*.{js,jsx,ts,tsx,json,cjs,mjs,svelte}": [
     "npm run check",
     "npm exec prettier -- --ignore-path .gitignore --write --plugin-search-dir=.",
-    "npm exec eslint -- --fix --ignore-path .gitignore"
+    "npm exec eslint -- --fix --ignore-pattern .gitignore"
   ]
 }
