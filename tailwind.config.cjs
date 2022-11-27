@@ -1,7 +1,12 @@
 module.exports = {
   content: ['./src/**/*.{html,js,svelte,ts}'],
   theme: {
-    extend: {},
+    extend: {
+      spacing: {
+        '3xl': '48rem',
+        '4xl': '56rem',
+      },
+    },
+    plugins: [],
   },
-  plugins: [],
 };

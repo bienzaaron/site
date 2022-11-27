@@ -41,6 +41,7 @@
         }}
       >
         <button
+          data-testid="menu-button"
           on:click={() => {
             showMenu = !showMenu;
           }}
@@ -77,7 +78,7 @@
       </div>
     </div>
   </div>
-  <div class="page-content max-w-full md:max-w-4xl mx-auto mb-16">
+  <div class="page-content max-w-full md:max-w-3xl md:w-3xl lg:max-w-4xl md:w-4xl mx-auto mb-16">
     <slot />
   </div>
 
@@ -87,6 +88,7 @@
     <div class="flex flex-row space-x-2">
       <a
         class="no-underline w-12 h-12 flex justify-center"
+        data-testid="gh-link"
         href="https://github.com/bienzaaron"
         aria-label="link to my GitHub"
       >
@@ -96,11 +98,13 @@
       </a>
       <a
         class="no-underline w-12 h-12 flex justify-center"
+        data-testid="npm-link"
         href="https://www.npmjs.com/~ajbienz"
         aria-label="link to my npm profile"><div class="my-auto"><NpmIcon /></div></a
       >
       <a
         class="no-underline w-12 h-12 flex justify-center"
+        data-testid="linkedin-link"
         href="https://www.linkedin.com/in/abienz"
         aria-label="link to my LinkedIn"
       >
