@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "skipLibCheck": true,
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "types": ["@playwright/test"]
+  },
+  "include": [
+    "tests/**/*",
+    "playwright.config.ts",
+    "vite.config.ts",
+    "eslint.config.js",
+    "postcss.config.mjs"
+  ]
+}

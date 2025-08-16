@@ -1,8 +1,10 @@
-@import 'highlight.css';
+@import "./highlight.css";
+@import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@theme {
+  --spacing-3xl: 48rem;
+  --spacing-4xl: 56rem;
+}
 
 @layer base {
   h1 {

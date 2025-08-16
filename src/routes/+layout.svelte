@@ -1,11 +1,17 @@
 <script lang="ts">
   import '../app.css';
-  import ClickOutside from 'svelte-click-outside';
   import MenuIcon from '$lib/components/icons/menu.svelte';
   import GithubIcon from '$lib/components/icons/github.svelte';
   import LinkedInIcon from '$lib/components/icons/linkedin.svelte';
   import NpmIcon from '$lib/components/icons/npm.svelte';
-  let showMenu = false;
+  import clickOutside from '$lib/actions/click-outside';
+
+  interface Props {
+    children?: import('svelte').Snippet;
+  }
+
+  let { children }: Props = $props();
+  let showMenu = $state(false);
 </script>
 
 <svelte:head>
@@ -14,7 +20,7 @@
 </svelte:head>
 
 <div class="page px-4 lg:px-32 py-2 flex flex-col font-mono">
-  <div class="hidden sm:flex header pt-10 pb-16 flex flex-row">
+  <div class="hidden sm:flex header pt-10 pb-16 flex-row">
     <div class="space-x-16">
       <a class="no-underline" href="/" aria-label="homepage"
         >Hi <span class="font-serif">👋</span></a
@@ -35,14 +41,10 @@
   </div>
   <div class="sm:hidden py-4 flex flex-row justify-end">
     <div class="flex flex-col items-end">
-      <ClickOutside
-        on:clickoutside={() => {
-          showMenu = false;
-        }}
-      >
+      <div use:clickOutside={() => (showMenu = false)}>
         <button
           data-testid="menu-button"
-          on:click={() => {
+          onclick={() => {
             showMenu = !showMenu;
           }}
           aria-label="Show Navigation Menu"
@@ -50,7 +52,7 @@
         >
           <MenuIcon />
         </button>
-      </ClickOutside>
+      </div>
       <div>
         {#if showMenu}
           <div
@@ -78,13 +80,13 @@
       </div>
     </div>
   </div>
-  <div class="page-content max-w-full md:max-w-3xl md:w-3xl lg:max-w-4xl md:w-4xl mx-auto mb-16">
-    <slot />
+  <div class="page-content max-w-full md:max-w-3xl lg:max-w-4xl md:w-4xl mx-auto mb-16">
+    {@render children?.()}
   </div>
 
   <div class="footer flex flex-row justify-center space-x-4">
     <p class="my-auto">AJ Bienz ©</p>
-    <div class="w-px bg-slate-500" />
+    <div class="w-px bg-slate-500"></div>
     <div class="flex flex-row space-x-2">
       <a
         class="no-underline w-12 h-12 flex justify-center"

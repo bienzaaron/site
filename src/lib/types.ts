@@ -1,3 +1,5 @@
+import type { render } from "svelte/server";
+
 export type TagMetadata = { count: number; selected: boolean };
 
 export type PostMetadata = {
@@ -12,14 +14,7 @@ export type PostPreview = {
 };
 
 export type Post = PostPreview & {
-  content: {
-    html: string;
-    css: {
-      code: string;
-      map: never;
-    };
-    head: string;
-  };
+  content: ReturnType<typeof render>;
 };
 
 export type GetPostRequest = {
