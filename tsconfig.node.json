@@ -6,12 +6,7 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "strict": true,
-    "types": [
-      "@playwright/test"
-    ]
+    "types": ["@playwright/test"]
   },
-  "include": [
-    "tests/**/*",
-    "playwright.config.ts"
-  ]
+  "include": ["tests/**/*", "playwright.config.ts"]
 }
