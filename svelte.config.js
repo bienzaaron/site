@@ -21,6 +21,9 @@ const config = {
       fallback: false,
       precompress: false,
     }),
+    alias: {
+      $lib: './src/lib',
+    }
   },
 };
 
