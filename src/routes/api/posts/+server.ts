@@ -1,9 +1,9 @@
-import path from 'node:path';
-import type { GetPostsResponse, Post, PostPreview } from '$lib/types';
-import { json, type RequestHandler } from '@sveltejs/kit';
+import path from "node:path";
+import type { GetPostsResponse, Post, PostPreview } from "$lib/types";
+import { json, type RequestHandler } from "@sveltejs/kit";
 
 // I love vite, this is so cool !?!?!?!
-const posts = import.meta.glob('$lib/markdown/blog/*.md');
+const posts = import.meta.glob("$lib/markdown/blog/*.md");
 
 export const GET: RequestHandler = async () => {
   return json(

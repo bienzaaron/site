@@ -1,4 +1,4 @@
-import type { render } from 'svelte/server';
+import type { render } from "svelte/server";
 
 export type TagMetadata = { count: number; selected: boolean };
 
