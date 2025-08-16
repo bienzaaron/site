@@ -6,6 +6,7 @@
   "engines": {
     "node": ">=22"
   },
+  "packageManager": "pnpm@9.15.0",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
@@ -13,9 +14,9 @@
     "prepare": "svelte-kit sync && husky",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
-    "lint": "prettier --ignore-path .gitignore --check . && eslint .",
-    "lint:fix": "prettier --ignore-path .gitignore --write . && eslint --fix .",
-    "ci": "npm run lint && npm run check && npm run build",
+    "lint": "prettier --check . && eslint .",
+    "lint:fix": "prettier --write . && eslint --fix .",
+    "ci": "pnpm run lint && pnpm run check && pnpm run build",
     "e2e": "playwright test"
   },
   "devDependencies": {
@@ -48,9 +49,9 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,cjs,mjs,svelte}": [
-      "npm run check",
-      "npm exec prettier -- --ignore-path .gitignore --write",
-      "npm exec eslint -- --fix"
+      "pnpm run check",
+      "prettier --write",
+      "eslint --fix"
     ]
   }
 }

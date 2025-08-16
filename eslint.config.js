@@ -10,7 +10,7 @@ export default [
     ignores: [
       "*.css",
       "*.html",
-      "package-lock.json",
+      "pnpm-lock.yaml",
       "build/**",
       ".svelte-kit/**",
       "dist/**",
@@ -19,6 +19,7 @@ export default [
       "test-results/**",
       "public/**",
       "static/**",
+      "actions-runner/**",
     ],
   },
   {
