@@ -29,56 +29,48 @@ test.describe('header navigation', () => {
   });
 
   test('about link', async ({ page, baseURL }) => {
-    await Promise.all([
-      page.waitForNavigation(),
-      page.getByRole('link').filter({ hasText: 'About 📕' }).click(),
-    ]);
-    expect(page.url()).toEqual(`${baseURL}/about`);
+    await Promise.all([page.getByRole('link').filter({ hasText: 'About 📕' }).click()]);
+    await expect(page).toHaveURL(new RegExp(`^${baseURL}/about$`));
   });
 
   test('blog link', async ({ page, baseURL }) => {
     await Promise.all([
-      page.waitForNavigation(),
       page.getByRole('link').filter({ hasText: 'Blog ✍️' }).click(),
+      page.waitForURL(`${baseURL}/blog`),
     ]);
-    expect(page.url()).toEqual(`${baseURL}/blog`);
+    await expect(page).toHaveURL(new RegExp(`^${baseURL}/blog$`));
   });
 
   test('home link', async ({ page, baseURL }) => {
-    await Promise.all([
-      page.waitForNavigation(),
-      page.getByRole('link').filter({ hasText: 'Hi 👋' }).click(),
-    ]);
-    expect(page.url()).toMatch(new RegExp(`^${baseURL}/?$`));
+    await Promise.all([page.getByRole('link').filter({ hasText: 'Hi 👋' }).click()]);
+    await expect(page).toHaveURL(new RegExp(`^${baseURL}/?$`));
   });
 
   test('resume link', async ({ page }) => {
-    await Promise.all([
-      page.waitForNavigation(),
-      page.getByRole('link').filter({ hasText: 'Hire Me 💲' }).click(),
-    ]);
-    expect(await page.getByText('Never Gonna Give You Up').count()).toBeGreaterThan(0);
+    await Promise.all([page.getByRole('link').filter({ hasText: 'Hire Me 💲' }).click()]);
+    await expect(page.getByText('Never Gonna Give You Up').filter({ visible: true }).first()).toBeVisible();
   });
 });
 
 test('blog navigation works', async ({ page, baseURL }) => {
   await page.goto('/blog');
-  // @ts-expect-error types are not correct for getByRole
-  await Promise.all([page.waitForNavigation(), page.getByRole('heading[level=2]').first().click()]);
-  expect(page.url()).toMatch(new RegExp(`^${baseURL}/blog/.+$`));
+  await Promise.all([page.getByRole('heading', { level: 2 }).first().click()]);
+  await expect(page).toHaveURL(new RegExp(`^${baseURL}/blog/.+$`));
 });
 
 test('github navigation works', async ({ page }) => {
-  await Promise.all([page.waitForNavigation(), page.getByTestId('gh-link').click()]);
-  expect(page.url()).toEqual('https://github.com/bienzaaron');
+  await Promise.all([page.getByTestId('gh-link').click()]);
+  await expect(page).toHaveURL('https://github.com/bienzaaron');
 });
 
 test('npm navigation works', async ({ page }) => {
-  await Promise.all([page.waitForNavigation(), page.getByTestId('npm-link').click()]);
-  expect(page.url()).toEqual('https://www.npmjs.com/~ajbienz');
+  await Promise.all([page.getByTestId('npm-link').click()]);
+  await expect(page).toHaveURL('https://www.npmjs.com/~ajbienz');
 });
 
 test('linkedin navigation works', async ({ page }) => {
-  await Promise.all([page.waitForNavigation(), page.getByTestId('linkedin-link').click()]);
+  const navigationPromise = page.waitForURL(/linkedin\.com/);
+  await page.getByTestId('linkedin-link').click();
+  await navigationPromise;
   expect(page.url()).toEqual('https://www.linkedin.com/in/abienz');
 });
