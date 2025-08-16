@@ -6,11 +6,16 @@
   import type { TagMetadata } from '$lib/types';
   import type { LayoutData } from './$types';
 
-  export let data: LayoutData;
+  interface Props {
+    data: LayoutData;
+    children?: import('svelte').Snippet;
+  }
+
+  let { data, children }: Props = $props();
 
   const { posts } = data;
 
-  const tags: { [tagName: string]: TagMetadata } = {};
+  const tags: { [tagName: string]: TagMetadata } = $state({});
   posts.forEach((p) => {
     p.metadata.tags.forEach((tag) => {
       if (tags[tag]) {
@@ -42,7 +47,7 @@
     }
   }
 
-  $: isRoot = $page.url.pathname === '/blog';
+  let isRoot = $derived($page.url.pathname === '/blog');
 </script>
 
 <div class="flex flex-row divide-x divide-slate-500">
@@ -51,7 +56,7 @@
       <h4>Tags</h4>
       {#each sortedTags as tag}
         <button
-          on:click={toggleFilter.bind(null, tag)}
+          onclick={toggleFilter.bind(null, tag)}
           class:font-semibold={tags[tag].selected}
           class="text-left w-min sm:w-max"
         >
@@ -61,6 +66,6 @@
     </div>
   {/if}
   <div class="w-full pb-8" class:pl-16={isRoot}>
-    <slot />
+    {@render children?.()}
   </div>
 </div>

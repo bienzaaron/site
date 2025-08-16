@@ -5,7 +5,12 @@
   import GithubIcon from '$lib/components/icons/github.svelte';
   import LinkedInIcon from '$lib/components/icons/linkedin.svelte';
   import NpmIcon from '$lib/components/icons/npm.svelte';
-  let showMenu = false;
+  interface Props {
+    children?: import('svelte').Snippet;
+  }
+
+  let { children }: Props = $props();
+  let showMenu = $state(false);
 </script>
 
 <svelte:head>
@@ -35,14 +40,10 @@
   </div>
   <div class="sm:hidden py-4 flex flex-row justify-end">
     <div class="flex flex-col items-end">
-      <ClickOutside
-        on:clickoutside={() => {
-          showMenu = false;
-        }}
-      >
+      <ClickOutside on:clickoutside={() => (showMenu = false)}>
         <button
           data-testid="menu-button"
-          on:click={() => {
+          onclick={() => {
             showMenu = !showMenu;
           }}
           aria-label="Show Navigation Menu"
@@ -79,12 +80,12 @@
     </div>
   </div>
   <div class="page-content max-w-full md:max-w-3xl md:w-3xl lg:max-w-4xl md:w-4xl mx-auto mb-16">
-    <slot />
+    {@render children?.()}
   </div>
 
   <div class="footer flex flex-row justify-center space-x-4">
     <p class="my-auto">AJ Bienz ©</p>
-    <div class="w-px bg-slate-500" />
+    <div class="w-px bg-slate-500"></div>
     <div class="flex flex-row space-x-2">
       <a
         class="no-underline w-12 h-12 flex justify-center"

@@ -6,13 +6,13 @@
   let tags: SvelteStore<{ [tagName: string]: TagMetadata }> = getContext('tags');
   const posts: Post[] = getContext('posts');
 
-  $: selectedTags = Object.entries($tags)
+  let selectedTags = $derived(Object.entries($tags)
     .filter(([, { selected }]) => selected)
-    .map(([key]) => key);
-  $: filterTags = selectedTags.length > 0 ? selectedTags : Object.keys($tags).sort();
-  $: filteredPosts = posts.filter((post) =>
+    .map(([key]) => key));
+  let filterTags = $derived(selectedTags.length > 0 ? selectedTags : Object.keys($tags).sort());
+  let filteredPosts = $derived(posts.filter((post) =>
     post.metadata.tags.some((tag) => filterTags.includes(tag)),
-  );
+  ));
 </script>
 
 <div>

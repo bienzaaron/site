@@ -2,12 +2,12 @@
   import intro from '$lib/markdown/intro.md';
   import family from '$lib/markdown/family.md';
 
-  let cursorHidden = false;
+  let cursorHidden = $state(false);
   setInterval(() => {
     cursorHidden = !cursorHidden;
   }, 400);
 
-  let commands = [
+  let commands = $state([
     {
       text: 'whoami',
       completed: false,
@@ -18,11 +18,11 @@
       completed: false,
       ouputComponent: family,
     },
-  ];
+  ]);
 
-  let commandIndex = 0;
-  let currentCommandIndex = 0;
-  $: currentCommand = commands[commandIndex];
+  let commandIndex = $state(0);
+  let currentCommandIndex = $state(0);
+  let currentCommand = $derived(commands[commandIndex]);
 
   (() => {
     let intervalHandle: ReturnType<typeof setInterval>;
@@ -50,7 +50,7 @@
   <div class:hidden={!command.completed}>
     <p class="my-0"><span class="font-semibold">aj@rva $</span> {command.text}</p>
     <div class="my-16 mx-8 space-y-10">
-      <svelte:component this={command.ouputComponent} />
+      <command.ouputComponent />
     </div>
   </div>
 {/each}
@@ -61,7 +61,7 @@
     {currentCommand.text.slice(0, currentCommandIndex)}<span class:hidden={cursorHidden}>_</span>
   </p>
   <div class="invisible my-16 ml-8 space-y-10">
-    <svelte:component this={currentCommand.ouputComponent} />
+    <currentCommand.ouputComponent />
   </div>
 {:else}
   <p class="my-0">

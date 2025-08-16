@@ -1,3 +1,4 @@
+import { render } from 'svelte/server';
 import type { GetPostRequest, Post } from '$lib/types';
 import { json, type RequestHandler } from '@sveltejs/kit';
 
@@ -6,6 +7,6 @@ export const GET: RequestHandler<GetPostRequest['params']> = async ({ params }) 
   return json(<Post>{
     id: params.postId,
     metadata: post.metadata,
-    content: post.default.render(),
+    content: render(post.default),
   });
 };
