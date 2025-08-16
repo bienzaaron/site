@@ -9,7 +9,7 @@ on:
 jobs:
   test_setup:
     name: Wait for Preview
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     outputs:
       preview_url: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
     steps:
@@ -23,7 +23,7 @@ jobs:
     name: Playwright Tests
     needs: test_setup
     timeout-minutes: 10
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v4
