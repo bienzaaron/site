@@ -1,19 +1,19 @@
 <script lang="ts">
-  import { setContext } from 'svelte';
-  import { readable, type Subscriber } from 'svelte/store';
-  import { page } from '$app/stores';
+  import { setContext } from "svelte";
+  import { readable, type Subscriber } from "svelte/store";
+  import { page } from "$app/stores";
 
-  import type { TagMetadata } from '$lib/types';
-  import type { LayoutData } from './$types';
+  import type { TagMetadata } from "$lib/types";
+  import type { LayoutData } from "./$types";
 
   interface Props {
     data: LayoutData;
-    children?: import('svelte').Snippet;
+    children?: import("svelte").Snippet;
   }
 
   let { data, children }: Props = $props();
 
-  const { posts } = data;
+  let posts = $derived(data.posts);
 
   const tags: { [tagName: string]: TagMetadata } = $state({});
   posts.forEach((p) => {
@@ -30,15 +30,15 @@
   });
   const sortedTags = Object.keys(tags).sort();
 
-  let setTags: Subscriber<{ [tagName: string]: TagMetadata }>;
+  let setTags: Subscriber<{ [tagName: string]: TagMetadata }> | undefined;
   const tagsStore = readable(tags, function start(set) {
     setTags = set;
     return function stop() {
       setTags = undefined;
     };
   });
-  setContext('tags', tagsStore);
-  setContext('posts', posts);
+  setContext("tags", tagsStore);
+  setContext("posts", posts);
 
   function toggleFilter(tag: string) {
     tags[tag].selected = !tags[tag].selected;
@@ -47,7 +47,7 @@
     }
   }
 
-  let isRoot = $derived($page.url.pathname === '/blog');
+  let isRoot = $derived($page.url.pathname === "/blog");
 </script>
 
 <div class="flex flex-row divide-x divide-slate-500">

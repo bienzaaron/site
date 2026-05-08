@@ -8,3 +8,10 @@ declare namespace App {
   // interface Session {}
   // interface Stuff {}
 }
+
+declare module "*.svelte" {
+  import type { Component } from "svelte";
+
+  const component: Component;
+  export default component;
+}
