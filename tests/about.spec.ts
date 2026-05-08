@@ -5,8 +5,6 @@ test.beforeEach(async ({ page }) => {
 });
 
 test("the about page renders", async ({ page }) => {
-  const target = page
-    .getByText("Hey, there! Thanks for checking out my site.")
-    .first();
+  const target = page.getByText("Hey, there! Thanks for checking out my site.").first();
   await expect(target).toBeVisible();
 });

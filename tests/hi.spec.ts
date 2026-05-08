@@ -5,10 +5,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 test("first paragraph shows up", async ({ page }) => {
-  const target = page
-    .getByRole("paragraph")
-    .filter({ hasText: "Hey!" })
-    .first();
+  const target = page.getByRole("paragraph").filter({ hasText: "Hey!" }).first();
   await expect(target).toBeVisible();
 });
 

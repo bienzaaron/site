@@ -4,9 +4,7 @@ test.beforeEach(async ({ page }) => {
   await page.goto("/blog");
 });
 
-test("the Posts heading exists and has the appropriate aria role and level", async ({
-  page,
-}) => {
+test("the Posts heading exists and has the appropriate aria role and level", async ({ page }) => {
   // @ts-expect-error not great types here
   const heading = page.getByRole("heading[level=1]");
   expect(heading).toBeVisible();
@@ -18,15 +16,11 @@ test("the post titles and previews render correctly and have appropriate aria ro
 }) => {
   const heading = page.getByTestId("post-title").first();
   expect(heading).toBeVisible();
-  expect(
-    await (await heading.elementHandle())?.evaluate((e) => e.tagName),
-  ).toEqual("H2");
+  expect(await (await heading.elementHandle())?.evaluate((e) => e.tagName)).toEqual("H2");
 
   const preview = page.getByTestId("post-description").first();
   expect(preview).toBeVisible();
-  expect(
-    await (await preview.elementHandle())?.evaluate((e) => e.tagName),
-  ).toEqual("P");
+  expect(await (await preview.elementHandle())?.evaluate((e) => e.tagName)).toEqual("P");
 });
 
 test("the tags column renders correctly", async ({ page }) => {
