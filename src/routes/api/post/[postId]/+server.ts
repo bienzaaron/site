@@ -12,6 +12,6 @@ export const GET: RequestHandler<GetPostRequest["params"]> = async ({
   return json(<Post>{
     id: params.postId,
     metadata: post.metadata,
-    content: render(post.default),
+    content: render(post.default).body,
   });
 };

@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 
 test.beforeEach(async ({ page }) => {
-  await page.goto("/blog");
+  await page.goto("/blog/");
 });
 
 test("the Posts heading exists and has the appropriate aria role and level", async ({
@@ -43,6 +43,7 @@ test("filtering by tags works", async ({ page }) => {
   const tag = page.getByRole("button").filter({ hasText: "something else" });
   const before = await page.getByRole("heading").count();
 
+  await expect(tag).toBeVisible();
   await tag.click();
 
   const after = await page.getByRole("heading").count();

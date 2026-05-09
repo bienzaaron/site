@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { setContext } from "svelte";
+  import { setContext, untrack } from "svelte";
   import { readable, type Subscriber } from "svelte/store";
   import { page } from "$app/stores";
 
@@ -13,8 +13,7 @@
 
   let { data, children }: Props = $props();
 
-  let posts = $derived(data.posts);
-
+  const posts = untrack(() => data.posts);
   const tags: { [tagName: string]: TagMetadata } = $state({});
   posts.forEach((p) => {
     p.metadata.tags.forEach((tag) => {
@@ -47,7 +46,7 @@
     }
   }
 
-  let isRoot = $derived($page.url.pathname === "/blog");
+  let isRoot = $derived($page.url.pathname === "/blog/");
 </script>
 
 <div class="flex flex-row divide-x divide-slate-500">

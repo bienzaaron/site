@@ -42,15 +42,15 @@ test.describe("header navigation", () => {
     await Promise.all([
       page.getByRole("link").filter({ hasText: "About 📕" }).click(),
     ]);
-    await expect(page).toHaveURL(new RegExp(`^${baseURL}/about$`));
+    await expect(page).toHaveURL(new RegExp(`^${baseURL}/about/$`));
   });
 
   test("blog link", async ({ page, baseURL }) => {
     await Promise.all([
       page.getByRole("link").filter({ hasText: "Blog ✍️" }).click(),
-      page.waitForURL(`${baseURL}/blog`),
+      page.waitForURL(`${baseURL}/blog/`),
     ]);
-    await expect(page).toHaveURL(new RegExp(`^${baseURL}/blog$`));
+    await expect(page).toHaveURL(new RegExp(`^${baseURL}/blog/$`));
   });
 
   test("home link", async ({ page, baseURL }) => {
@@ -76,9 +76,9 @@ test.describe("header navigation", () => {
 });
 
 test("blog navigation works", async ({ page, baseURL }) => {
-  await page.goto("/blog");
+  await page.goto("/blog/");
   await Promise.all([page.getByRole("heading", { level: 2 }).first().click()]);
-  await expect(page).toHaveURL(new RegExp(`^${baseURL}/blog/.+$`));
+  await expect(page).toHaveURL(new RegExp(`^${baseURL}/blog/.+/$`));
 });
 
 test("github navigation works", async ({ page }) => {
