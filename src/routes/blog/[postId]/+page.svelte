@@ -10,4 +10,4 @@
 </script>
 
 <h1>{post.metadata.title}</h1>
-{@html post.content.html}
+{@html post.content}
