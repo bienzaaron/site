@@ -21,7 +21,6 @@ test("second paragraph shows up", async ({ page }) => {
 });
 
 test("photo shows up", async ({ page }) => {
-  await page.waitForTimeout(3000);
   const text = page
     .getByRole("paragraph")
     .filter({ hasText: "picture of me, my wife, and all my pets" })
