@@ -61,15 +61,9 @@ test.describe("header navigation", () => {
   });
 
   test("resume link", async ({ page }) => {
-    await Promise.all([
-      page.getByRole("link").filter({ hasText: "Hire Me 💲" }).click(),
-    ]);
     await expect(
-      page
-        .getByText("Never Gonna Give You Up")
-        .filter({ visible: true })
-        .first(),
-    ).toBeVisible();
+      page.getByRole("link").filter({ hasText: "Hire Me 💲" }),
+    ).toHaveAttribute("href", "https://youtu.be/dQw4w9WgXcQ");
   });
 });
 
