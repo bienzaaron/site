@@ -61,9 +61,17 @@ test.describe("header navigation", () => {
   });
 
   test("resume link", async ({ page }) => {
-    await expect(
-      page.getByRole("link").filter({ hasText: "Hire Me 💲" }),
-    ).toHaveAttribute("href", "https://youtu.be/dQw4w9WgXcQ");
+    const resumeLink = page.getByRole("link").filter({ hasText: "Hire Me 💲" });
+
+    await expect(resumeLink).toHaveAttribute(
+      "href",
+      "https://youtu.be/dQw4w9WgXcQ",
+    );
+
+    await resumeLink.click();
+    await expect(page).toHaveURL(
+      /^https:\/\/([^/]+\.)?(youtube\.com|youtu\.be)\//,
+    );
   });
 });
 
