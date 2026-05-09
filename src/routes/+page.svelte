@@ -1,6 +1,6 @@
 <script lang="ts">
-  import intro from '$lib/markdown/intro.md';
-  import family from '$lib/markdown/family.md';
+  import intro from "$lib/markdown/intro.md";
+  import family from "$lib/markdown/family.md";
 
   let cursorHidden = $state(false);
   setInterval(() => {
@@ -9,12 +9,12 @@
 
   let commands = $state([
     {
-      text: 'whoami',
+      text: "whoami",
       completed: false,
       ouputComponent: intro,
     },
     {
-      text: 'cat family.png',
+      text: "cat family.png",
       completed: false,
       ouputComponent: family,
     },
@@ -48,7 +48,10 @@
 
 {#each commands as command}
   <div class:hidden={!command.completed}>
-    <p class="my-0"><span class="font-semibold">aj@rva $</span> {command.text}</p>
+    <p class="my-0">
+      <span class="font-semibold">aj@rva $</span>
+      {command.text}
+    </p>
     <div class="my-16 mx-8 space-y-10">
       <command.ouputComponent />
     </div>
@@ -58,13 +61,16 @@
 {#if currentCommand}
   <p class="my-0">
     <span class="font-semibold">aj@rva $</span>
-    {currentCommand.text.slice(0, currentCommandIndex)}<span class:hidden={cursorHidden}>_</span>
+    {currentCommand.text.slice(0, currentCommandIndex)}<span
+      class:hidden={cursorHidden}>_</span
+    >
   </p>
   <div class="invisible my-16 ml-8 space-y-10">
     <currentCommand.ouputComponent />
   </div>
 {:else}
   <p class="my-0">
-    <span class="font-semibold">aj@rva $</span> <span class:hidden={cursorHidden}>_</span>
+    <span class="font-semibold">aj@rva $</span>
+    <span class:hidden={cursorHidden}>_</span>
   </p>
 {/if}

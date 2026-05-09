@@ -61,15 +61,17 @@ test.describe("header navigation", () => {
   });
 
   test("resume link", async ({ page }) => {
-    await Promise.all([
-      page.getByRole("link").filter({ hasText: "Hire Me 💲" }).click(),
-    ]);
-    await expect(
-      page
-        .getByText("Never Gonna Give You Up")
-        .filter({ visible: true })
-        .first(),
-    ).toBeVisible();
+    const resumeLink = page.getByRole("link").filter({ hasText: "Hire Me 💲" });
+
+    await expect(resumeLink).toHaveAttribute(
+      "href",
+      "https://youtu.be/dQw4w9WgXcQ",
+    );
+
+    await resumeLink.click();
+    await expect(page).toHaveURL(
+      /^https:\/\/([^/]+\.)?(youtube\.com|youtu\.be)\//,
+    );
   });
 });
 

@@ -21,13 +21,12 @@ test("second paragraph shows up", async ({ page }) => {
 });
 
 test("photo shows up", async ({ page }) => {
-  await page.waitForTimeout(3000);
   const text = page
     .getByRole("paragraph")
     .filter({ hasText: "picture of me, my wife, and all my pets" })
     .first();
   const image = page.getByAltText("me, my wife, dog, and two cats").first();
 
-  await expect(text).toBeVisible();
+  await expect(text).toBeVisible({ timeout: 10000 });
   await expect(image).toBeVisible();
 });
