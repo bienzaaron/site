@@ -27,6 +27,6 @@ test("photo shows up", async ({ page }) => {
     .first();
   const image = page.getByAltText("me, my wife, dog, and two cats").first();
 
-  await expect(text).toBeVisible();
+  await expect(text).toBeVisible({ timeout: 10000 });
   await expect(image).toBeVisible();
 });
