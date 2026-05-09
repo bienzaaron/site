@@ -1,13 +1,13 @@
 <script lang="ts">
-  import '../app.css';
-  import MenuIcon from '$lib/components/icons/menu.svelte';
-  import GithubIcon from '$lib/components/icons/github.svelte';
-  import LinkedInIcon from '$lib/components/icons/linkedin.svelte';
-  import NpmIcon from '$lib/components/icons/npm.svelte';
-  import clickOutside from '$lib/actions/click-outside';
+  import "../app.css";
+  import MenuIcon from "$lib/components/icons/menu.svelte";
+  import GithubIcon from "$lib/components/icons/github.svelte";
+  import LinkedInIcon from "$lib/components/icons/linkedin.svelte";
+  import NpmIcon from "$lib/components/icons/npm.svelte";
+  import clickOutside from "$lib/actions/click-outside";
 
   interface Props {
-    children?: import('svelte').Snippet;
+    children?: import("svelte").Snippet;
   }
 
   let { children }: Props = $props();
@@ -63,7 +63,10 @@
             <a class="no-underline py-2" href="/" aria-label="homepage"
               >Hi <span class="font-serif">👋</span></a
             >
-            <a class="no-underline py-2" href="/about" aria-label="about me page"
+            <a
+              class="no-underline py-2"
+              href="/about"
+              aria-label="about me page"
               >About <span class="font-serif">📕</span></a
             >
             <a class="no-underline py-2" href="/blog" aria-label="blog entries"
@@ -80,7 +83,9 @@
       </div>
     </div>
   </div>
-  <div class="page-content max-w-full md:max-w-3xl lg:max-w-4xl md:w-4xl mx-auto mb-16">
+  <div
+    class="page-content max-w-full md:max-w-3xl lg:max-w-4xl md:w-4xl mx-auto mb-16"
+  >
     {@render children?.()}
   </div>
 
@@ -102,7 +107,8 @@
         class="no-underline w-12 h-12 flex justify-center"
         data-testid="npm-link"
         href="https://www.npmjs.com/~ajbienz"
-        aria-label="link to my npm profile"><div class="my-auto"><NpmIcon /></div></a
+        aria-label="link to my npm profile"
+        ><div class="my-auto"><NpmIcon /></div></a
       >
       <a
         class="no-underline w-12 h-12 flex justify-center"
