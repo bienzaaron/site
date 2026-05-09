@@ -46,7 +46,7 @@
     }
   }
 
-  let isRoot = $derived($page.url.pathname === "/blog");
+  let isRoot = $derived($page.url.pathname === "/blog/");
 </script>
 
 <div class="flex flex-row divide-x divide-slate-500">

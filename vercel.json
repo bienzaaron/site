@@ -1,9 +1,3 @@
 {
-  "trailingSlash": false,
-  "rewrites": [
-    { "source": "/blog", "destination": "/blog.html" },
-    { "source": "/blog/:id", "destination": "/blog/:id.html" },
-    { "source": "/about", "destination": "/about.html" },
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
+  "trailingSlash": true
 }
