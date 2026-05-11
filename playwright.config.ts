@@ -10,15 +10,12 @@ const config: PlaywrightTestConfig = {
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
-  /* Opt out of parallel tests on CI. */
-  // workers: process.env.CI ? 1 : undefined,
   reporter: "html",
   use: {
     actionTimeout: 0,
     baseURL: process.env.E2E_BASE_URL ?? "http://localhost:4173",
     trace: "on-first-retry",
   },
-
   projects: [
     {
       name: "chromium",
@@ -55,6 +52,7 @@ const config: PlaywrightTestConfig = {
   webServer: {
     command: "pnpm run build && pnpm run preview",
     port: 4173,
+    reuseExistingServer: !process.env.CI,
   },
 };
 
